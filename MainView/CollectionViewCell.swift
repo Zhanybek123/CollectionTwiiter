@@ -30,7 +30,6 @@ class CollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
-        
     }
     
     func setUpViews() {
