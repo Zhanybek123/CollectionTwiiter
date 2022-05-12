@@ -47,9 +47,6 @@ class CollectionViewCell: UICollectionViewCell {
         profileImageView.widthAnchor.constraint(equalToConstant: 50),
         profileImageView.heightAnchor.constraint(equalToConstant: 50)
         ])
-        
-        
-        
     }
     
     required init?(coder: NSCoder) {
