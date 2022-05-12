@@ -10,6 +10,7 @@ import UIKit
 class CollectionViewCell: UICollectionViewCell {
     
     let cellId = "cellId"
+    let cell = "fjkf"
      
     let wordLabel: UILabel = {
         let label = UILabel()
@@ -47,6 +48,7 @@ class CollectionViewCell: UICollectionViewCell {
         profileImageView.widthAnchor.constraint(equalToConstant: 50),
         profileImageView.heightAnchor.constraint(equalToConstant: 50)
         ])
+        
     }
     
     required init?(coder: NSCoder) {
