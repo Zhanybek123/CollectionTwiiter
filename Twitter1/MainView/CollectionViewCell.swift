@@ -9,8 +9,6 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-   
-    
     let cellId = "cellId"
     
     var wordLabel: UILabel = {
@@ -38,12 +36,11 @@ class CollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    let bioTextView: UITextView = {
-        let bio = UITextView()
+    let bioTextView: UILabel = {
+        let bio = UILabel()
         bio.translatesAutoresizingMaskIntoConstraints = false
-        bio.font = .systemFont(ofSize: 15)
-        bio.textContainer.maximumNumberOfLines = 0
-        bio.text = "iPhone, Ipad, iOS programming community. Join me an see all the posibilities ouyt there dedicated speacial for you and people like you and me"
+        bio.font = UIFont.systemFont(ofSize: 15)
+        bio.numberOfLines = 0
         return bio
     }()
     
@@ -113,7 +110,7 @@ class CollectionViewCell: UICollectionViewCell {
             bioTextView.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor),
             bioTextView.leftAnchor.constraint(equalTo: usernameLabel.leftAnchor),
             bioTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -13),
-            bioTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            bioTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 10),
             
             followButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 13),
             followButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -13),
@@ -125,14 +122,14 @@ class CollectionViewCell: UICollectionViewCell {
             firstLine.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 13),
             firstLine.heightAnchor.constraint(equalToConstant: 1)
             
-            
         ])
+        
     }
     
     func configure(with model: MainModel) {
         wordLabel.text = model.users
         profileImageView.image = UIImage(named: model.userImage)
-        usernameLabel.text = model.userlabel
+        usernameLabel.text = model.userlabel 
         bioTextView.text = model.bioText
     }
     

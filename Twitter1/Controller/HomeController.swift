@@ -19,8 +19,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var dataForHeader = HeaderAndFooter(header: "WHO TO FOLLOW", footer: "")
     var dataForFooter = HeaderAndFooter(header: "", footer: "Show me more")
     
-//    let footerId = "footerId"
-//    @Interface
+    //    let footerId = "footerId"
+    //    @Interface
     
     
     override func viewDidLoad() {
@@ -29,11 +29,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell().cellId)
         collectionView?.register(CollectionVIewCellHeaderAndFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionVIewCellHeaderAndFooter().headerId)
         collectionView?.register(CollectionVIewCellFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CollectionVIewCellFooter().footerId)
-//        self.collectionView.layoutMargins = UIEdgeInsets.zero
-      
+        //        self.collectionView.layoutMargins = UIEdgeInsets.zero
+        
     }
     
-   
+    
     
     
     
@@ -44,21 +44,22 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell().cellId, for: indexPath) as! CollectionViewCell
-        cell.configure(with: data[indexPath.row])
-//        cell.layoutMargins = UIEdgeInsets.zero
+        let data = data[indexPath.item]
+        cell.configure(with: data)
+        //        cell.layoutMargins = UIEdgeInsets.zero
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let user = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell().cellId, for: indexPath) as? CollectionViewCell {
-            let aproximateWidthOfBioTextView = view.frame.width - 21 - 70
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell().cellId, for: indexPath) as? CollectionViewCell {
+            let data = data[indexPath.item]
+            let aproximateWidthOfBioTextView = collectionView.frame.width - 104
             let size = CGSize(width: aproximateWidthOfBioTextView, height: 1000)
             let font = UIFont.systemFont(ofSize: 15)
             let attributes = [NSAttributedString.Key.font: font]
-            
-            let bioString = NSString(string: user.bioTextView.text)
+            let bioString = NSString(string: data.bioText)
             let estimateFrame = bioString.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            return CGSize(width: view.frame.width, height: estimateFrame.height + 66)
+            return CGSize(width: view.frame.width, height: estimateFrame.height + 63)
         }
         
         return CGSize(width: view.frame.width, height: 200)
