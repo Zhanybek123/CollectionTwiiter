@@ -56,8 +56,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             let font = UIFont.systemFont(ofSize: 15)
             let attributes = [NSAttributedString.Key.font: font]
             
-            let estimateFrame = NSString(string: user.bioTextView).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            
+            let bioString = NSString(string: user.bioTextView.text)
+            let estimateFrame = bioString.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
             return CGSize(width: view.frame.width, height: estimateFrame.height + 66)
         }
         
