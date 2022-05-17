@@ -87,5 +87,6 @@ class CollectionVIewCellFooter: UICollectionViewCell {
     
     func configureFooter(with model: HeaderAndFooter) {
         footer.text = model.footer
+        
 }
 }

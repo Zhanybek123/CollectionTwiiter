@@ -9,13 +9,15 @@ import UIKit
 
 
 
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UINavigationController {
     
     var data: [MainModel] {
         let brian = MainModel(users: "Brian", userImage: "profile_image", userlabel: "@Brianiosdev", bioText: "iPhone, Ipad, iOS programming community. Join me an see all the posibilities ouyt there dedicated speacial for you and people like you and me")
         let ray = MainModel(users: "Ray", userImage: "ray", userlabel: "@Raymyname", bioText: "Hi esveryone! I'm really excited to attend in here. Also iPhone, Ipad, iOS programming community. Join me an see all the posibilities ouyt there dedicated speacial for you and people like you and me")
-        return [brian, ray]
+        let sam = MainModel(users: "Sam", userImage: "ray", userlabel: "@RSamsname", bioText: "Hi esveryone! I'm really excited to attend in here. Also iPhone, Ipad, iOS programming community. Join me an see all the posibilities ouyt there dedicated speacial for you and people like you and me. going to add some more text and see the reaction of costomized cell in action")
+        return [brian, ray, sam]
     }
+    
     var dataForHeader = HeaderAndFooter(header: "WHO TO FOLLOW", footer: "")
     var dataForFooter = HeaderAndFooter(header: "", footer: "Show me more")
     
@@ -30,9 +32,44 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(CollectionVIewCellHeaderAndFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionVIewCellHeaderAndFooter().headerId)
         collectionView?.register(CollectionVIewCellFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CollectionVIewCellFooter().footerId)
         //        self.collectionView.layoutMargins = UIEdgeInsets.zero
+        setUpNavigationItems()
         
     }
     
+    
+    func setUpNavigationItems() {
+        
+        let titleImageView: UIImageView = {
+            let title = UIImageView()
+            title.image = UIImage(named: "twitt")
+            title.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+            title.contentMode = .scaleAspectFit
+            return title
+        }()
+        navigationItem.titleView = titleImageView
+        
+        //        let followButton = UIButton(type: .system)
+        let followButton: UIButton = {
+            let followButton = UIButton()
+            followButton.setImage(UIImage(named: "f")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            followButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+            followButton.contentMode = .scaleAspectFit
+            return followButton
+        }()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: followButton)
+        
+        let searchButton  = UIButton(type: .system)
+        searchButton.setImage(UIImage(named: "search")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        searchButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        searchButton.contentMode = .scaleAspectFit
+        
+        let composeButton  = UIButton(type: .system)
+        composeButton.setImage(UIImage(named: "nib")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        composeButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        composeButton.contentMode = .scaleAspectFit
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton), UIBarButtonItem(customView: composeButton)
+        
+    }
     
     
     
@@ -51,7 +88,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell().cellId, for: indexPath) as? CollectionViewCell {
+        if let _ = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell().cellId, for: indexPath) as? CollectionViewCell {
             let data = data[indexPath.item]
             let aproximateWidthOfBioTextView = collectionView.frame.width - 104
             let size = CGSize(width: aproximateWidthOfBioTextView, height: 1000)
@@ -61,7 +98,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             let estimateFrame = bioString.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
             return CGSize(width: view.frame.width, height: estimateFrame.height + 63)
         }
-        
         return CGSize(width: view.frame.width, height: 200)
     }
     
@@ -91,7 +127,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
     }
+    
 }
 

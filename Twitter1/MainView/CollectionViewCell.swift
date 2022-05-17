@@ -67,8 +67,9 @@ class CollectionViewCell: UICollectionViewCell {
     
     let firstLine: UIView = {
         let line = UIView()
-        line.backgroundColor = .black
+        line.layer.borderColor = UIColor.gray.cgColor
         line.layer.borderWidth = 4
+        line.layer.opacity = 4
         line.translatesAutoresizingMaskIntoConstraints = false
         return line
     }()
@@ -132,7 +133,5 @@ class CollectionViewCell: UICollectionViewCell {
         usernameLabel.text = model.userlabel 
         bioTextView.text = model.bioText
     }
-    
-  
     
 }
