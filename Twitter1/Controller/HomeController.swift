@@ -9,7 +9,7 @@ import UIKit
 
 
 
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UINavigationController {
+class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var data: [MainModel] {
         let brian = MainModel(users: "Brian", userImage: "profile_image", userlabel: "@Brianiosdev", bioText: "iPhone, Ipad, iOS programming community. Join me an see all the posibilities ouyt there dedicated speacial for you and people like you and me")
@@ -20,6 +20,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var dataForHeader = HeaderAndFooter(header: "WHO TO FOLLOW", footer: "")
     var dataForFooter = HeaderAndFooter(header: "", footer: "Show me more")
+    let refreshMainVIew = UIRefreshControl()
+    
     
     //    let footerId = "footerId"
     //    @Interface
@@ -33,46 +35,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(CollectionVIewCellFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CollectionVIewCellFooter().footerId)
         //        self.collectionView.layoutMargins = UIEdgeInsets.zero
         setUpNavigationItems()
-        
+        refreshMainVIew.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        collectionView.addSubview(refreshMainVIew)
     }
     
-    
-    func setUpNavigationItems() {
-        
-        let titleImageView: UIImageView = {
-            let title = UIImageView()
-            title.image = UIImage(named: "twitt")
-            title.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-            title.contentMode = .scaleAspectFit
-            return title
-        }()
-        navigationItem.titleView = titleImageView
-        
-        //        let followButton = UIButton(type: .system)
-        let followButton: UIButton = {
-            let followButton = UIButton()
-            followButton.setImage(UIImage(named: "f")?.withRenderingMode(.alwaysOriginal), for: .normal)
-            followButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-            followButton.contentMode = .scaleAspectFit
-            return followButton
-        }()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: followButton)
-        
-        let searchButton  = UIButton(type: .system)
-        searchButton.setImage(UIImage(named: "search")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        searchButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        searchButton.contentMode = .scaleAspectFit
-        
-        let composeButton  = UIButton(type: .system)
-        composeButton.setImage(UIImage(named: "nib")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        composeButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        composeButton.contentMode = .scaleAspectFit
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton), UIBarButtonItem(customView: composeButton)
-        
+    @objc func didPullToRefresh() {
+        print("refreshed")
+        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            self.refreshMainVIew.endRefreshing()
+            self.collectionView.reloadData()
+        }
     }
-    
-    
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let rows = data.count

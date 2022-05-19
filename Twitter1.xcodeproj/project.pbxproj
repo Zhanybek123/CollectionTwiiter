@@ -16,6 +16,7 @@
 		D8127117282D995C006DFFBE /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8127116282D995C006DFFBE /* MainModel.swift */; };
 		D812711A282FE89E006DFFBE /* HeaderAndFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8127119282FE89E006DFFBE /* HeaderAndFooter.swift */; };
 		D812711C282FF66A006DFFBE /* CollectionVIewCellHeaderAndFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812711B282FF66A006DFFBE /* CollectionVIewCellHeaderAndFooter.swift */; };
+		D8F86D9B2836921100D807E8 /* HomeControllerBarConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F86D9A2836921100D807E8 /* HomeControllerBarConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D8127116282D995C006DFFBE /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		D8127119282FE89E006DFFBE /* HeaderAndFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderAndFooter.swift; sourceTree = "<group>"; };
 		D812711B282FF66A006DFFBE /* CollectionVIewCellHeaderAndFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVIewCellHeaderAndFooter.swift; sourceTree = "<group>"; };
+		D8F86D9A2836921100D807E8 /* HomeControllerBarConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerBarConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				D81270FC282BE06B006DFFBE /* AppDelegate.swift */,
 				D81270FE282BE06B006DFFBE /* SceneDelegate.swift */,
 				D8127110282BE303006DFFBE /* HomeController.swift */,
+				D8F86D9A2836921100D807E8 /* HomeControllerBarConfiguration.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8127111282BE303006DFFBE /* HomeController.swift in Sources */,
+				D8F86D9B2836921100D807E8 /* HomeControllerBarConfiguration.swift in Sources */,
 				D812711A282FE89E006DFFBE /* HeaderAndFooter.swift in Sources */,
 				D812711C282FF66A006DFFBE /* CollectionVIewCellHeaderAndFooter.swift in Sources */,
 				D8127114282D8250006DFFBE /* CollectionViewCell.swift in Sources */,
